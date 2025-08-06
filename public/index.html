@@ -1,43 +1,335 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StoryForge Pro - Transform Boring Corporate Content</title>
+    <meta name="description" content="Transform bland corporate content into compelling dramatic stories using proven storytelling principles">
+    <meta property="og:title" content="StoryForge Pro - Corporate Story Transformer">
+    <meta property="og:description" content="Turn boring business content into dramatic, engaging stories">
+    <meta property="og:type" content="website">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- React and ReactDOM -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    
+    <!-- Babel for JSX transformation -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <!-- Lucide React Icons -->
+    <script src="https://unpkg.com/lucide-react@latest/dist/umd/lucide-react.js"></script>
+    
+    <style>
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+        }
+    </style>
+</head>
+<body>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+    <script type="text/babel">
+        const { useState } = React;
+        const { Play, Zap, Target, Users, TrendingUp, Edit3, Sparkles } = lucideReact;
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+        const StorytellingDemo = () => {
+          const [activeTab, setActiveTab] = useState('input');
+          const [inputText, setInputText] = useState('');
+          const [selectedFramework, setSelectedFramework] = useState('hero');
+          const [transformedContent, setTransformedContent] = useState(null);
+
+          const sampleContent = {
+            tech: "Our new CRM software increases sales efficiency by 40%. It features automated lead scoring, integrated email campaigns, and advanced analytics. Companies using our solution see improved conversion rates and better customer relationship management.",
+            finance: "Q3 results show 15% revenue growth. Our diversified portfolio performed well across all sectors. We maintained strong liquidity ratios and expanded our market presence through strategic acquisitions.",
+            healthcare: "Our telehealth platform enables remote patient monitoring. Healthcare providers can track vital signs, schedule virtual appointments, and manage electronic health records efficiently.",
+            ai: "AI will take over repetitive tasks and enable people to focus on their strengths. It supercharges our endeavors. The Copilot is designed to assist us in researching databases, to do in a few minutes what otherwise would have taken me precious hours. Our agents used to handle 8,000 calls a day. Since deploying our AI that volume has dropped to 1000 calls."
+          };
+
+          const frameworks = {
+            hero: {
+              name: "Hero's Journey",
+              icon: Target,
+              description: "Transform your company/customer into the hero overcoming challenges"
+            },
+            conflict: {
+              name: "Conflict & Resolution", 
+              icon: Zap,
+              description: "Build dramatic tension around problems and their solutions"
+            },
+            transformation: {
+              name: "Transformation Arc",
+              icon: TrendingUp,
+              description: "Show the dramatic before/after journey of change"
+            },
+            dilemma: {
+              name: "Impossible Choice",
+              icon: Users,
+              description: "Present the crushing dilemmas organizations face"
+            }
+          };
+
+          const transformContent = () => {
+            const content = inputText || sampleContent.tech;
+            
+            let transformed = '';
+            
+            if (selectedFramework === 'hero') {
+              transformed = `🎬 **THE HERO'S JOURNEY**
+
+**The Ordinary World:**
+Sales teams everywhere faced the same crushing reality - drowning in leads they couldn't properly qualify, watching promising opportunities slip through the cracks like water through their fingers.
+
+**The Call to Adventure:** 
+Then everything changed. What if there was a way to not just manage customers, but to truly understand them? To predict their needs before they even knew them themselves?
+
+**The Mentor & Tools:**
+Enter our CRM platform - not just software, but a strategic ally armed with:
+- AI-powered lead scoring that reads between the lines
+- Email campaigns that feel personal, not robotic  
+- Analytics that reveal hidden patterns in customer behavior
+
+**The Transformation:**
+Companies didn't just see 40% efficiency gains - they witnessed their teams transform from overwhelmed order-takers into strategic relationship architects. Conversion rates soared as authentic connections replaced cold outreach.
+
+**Return with the Elixir:**
+Now these heroes return to their markets not just with better tools, but with the confidence that comes from truly understanding their customers' journeys.`;
+            } else if (selectedFramework === 'conflict') {
+              transformed = `⚡ **CONFLICT & RESOLUTION**
+
+**The Tension Builds:**
+Picture this: It's 11 PM. Your best salesperson is still at their desk, manually sifting through hundreds of leads, trying to figure out which ones are worth pursuing. Meanwhile, your biggest competitor just closed three deals while your team was still organizing spreadsheets.
+
+**The Stakes Rise:**
+Every minute of inefficiency isn't just lost time - it's lost revenue, frustrated team members, and customers who feel like just another number in your database. The pressure is mounting. Something has to give.
+
+**The Turning Point:**
+But what if I told you there's a way to flip this entire script? Our CRM doesn't just organize your data - it transforms your entire relationship with your customers.
+
+**Resolution & Victory:**
+Watch as automated lead scoring identifies your hottest prospects in seconds. See personalized email campaigns that customers actually want to read. Experience the moment when your team realizes they're not just working harder - they're working smarter, converting 40% more leads with half the stress.
+
+The conflict is over. Your team wins. Your customers win. Everyone wins.`;
+            } else if (selectedFramework === 'transformation') {
+              transformed = `📈 **THE TRANSFORMATION ARC**
+
+**Before: The Struggle**
+Meet Sarah, a sales manager drowning in chaos. Her team of 12 was talented but scattered - chasing cold leads, sending generic emails, making decisions based on gut feelings rather than data. Monthly targets felt like climbing Mount Everest in flip-flops.
+
+**The Catalyst Moment:**
+Everything changed the day Sarah discovered our CRM platform. Not because it promised easy solutions, but because it promised intelligent ones.
+
+**The Evolution:**
+Week 1: The system began learning her team's patterns
+Week 2: Lead scoring started identifying the prospects that actually mattered  
+Week 4: Email campaigns achieved 60% higher open rates
+Week 8: Sarah realized she wasn't just managing a team anymore - she was orchestrating a symphony
+
+**The New Reality:**
+Six months later, Sarah's team isn't just hitting targets - they're redefining what's possible. 40% efficiency gains translate to real transformation: More time for strategy, deeper customer relationships, and a team that actually looks forward to Monday mornings.
+
+This isn't just about software. It's about the transformation from surviving to thriving.`;
+            } else if (selectedFramework === 'dilemma') {
+              transformed = `😰 **THE IMPOSSIBLE CHOICE**
+
+**The Crushing Dilemma:**
+Every sales manager faces this brutal choice: Spend hours manually qualifying leads and risk missing opportunities, or spread your team thin across every prospect and watch conversion rates plummet.
+
+It's a trap with no good options. Choose speed, sacrifice quality. Choose quality, sacrifice speed. Either way, someone loses - your team burns out, customers get ignored, or competitors eat your lunch.
+
+**The Hidden Third Option:**
+But what if this wasn't actually a choice at all? What if the entire premise was wrong?
+
+Our CRM platform doesn't make you choose between speed and quality - it obliterates the trade-off entirely. AI-powered lead scoring gives you both instant analysis AND deeper insights than manual review ever could.
+
+**Breaking Free:**
+Suddenly, Sarah's impossible choice becomes laughably simple. Her team qualifies leads 10x faster while simultaneously delivering more personalized, targeted outreach. The dilemma that kept her awake at night? It simply doesn't exist anymore.
+
+Some problems can't be solved. They can only be dissolved. This was one of them.`;
+            }
+
+            setTransformedContent({
+              original: content,
+              transformed,
+              framework: selectedFramework
+            });
+            setActiveTab('result');
+          };
+
+          return (
+            <div className="max-w-6xl mx-auto p-6 bg-gradient-to-br from-purple-50 to-blue-50 min-h-screen">
+              <div className="text-center mb-8">
+                <h1 className="text-4xl font-bold text-gray-800 mb-2 flex items-center justify-center gap-3">
+                  <Sparkles className="text-purple-600" />
+                  StoryForge Pro
+                  <Sparkles className="text-purple-600" />
+                </h1>
+                <p className="text-xl text-gray-600">Transform Boring Corporate Content into Compelling Stories</p>
+                <p className="text-sm text-gray-500 mt-2">Built with Jeff Kitchen's dramatic storytelling principles</p>
+              </div>
+
+              <div className="bg-white rounded-xl shadow-2xl overflow-hidden">
+                <div className="flex border-b">
+                  <button
+                    onClick={() => setActiveTab('input')}
+                    className={`flex-1 py-4 px-6 text-center font-semibold transition-colors ${
+                      activeTab === 'input' 
+                        ? 'bg-purple-600 text-white' 
+                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                    }`}
+                  >
+                    <Edit3 className="inline-block mr-2" size={20} />
+                    Input Content
+                  </button>
+                  <button
+                    onClick={() => setActiveTab('result')}
+                    className={`flex-1 py-4 px-6 text-center font-semibold transition-colors ${
+                      activeTab === 'result' 
+                        ? 'bg-purple-600 text-white' 
+                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                    }`}
+                  >
+                    <Play className="inline-block mr-2" size={20} />
+                    Transformed Story
+                  </button>
+                </div>
+
+                {activeTab === 'input' && (
+                  <div className="p-8">
+                    <div className="grid md:grid-cols-2 gap-8">
+                      <div>
+                        <h3 className="text-2xl font-bold mb-4 text-gray-800">Your Corporate Content</h3>
+                        <textarea
+                          value={inputText}
+                          onChange={(e) => setInputText(e.target.value)}
+                          placeholder="Paste your boring corporate video script, product description, or company announcement here..."
+                          className="w-full h-40 p-4 border-2 border-gray-200 rounded-lg focus:border-purple-500 focus:outline-none resize-none"
+                        />
+                        
+                        <div className="mt-4">
+                          <p className="text-sm text-gray-600 mb-2">Or try a sample:</p>
+                          <div className="flex gap-2 flex-wrap">
+                            {Object.entries(sampleContent).map(([key, content]) => (
+                              <button
+                                key={key}
+                                onClick={() => setInputText(content)}
+                                className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm hover:bg-blue-200 transition-colors"
+                              >
+                                {key.charAt(0).toUpperCase() + key.slice(1)}
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+
+                      <div>
+                        <h3 className="text-2xl font-bold mb-4 text-gray-800">Choose Story Framework</h3>
+                        <div className="space-y-4">
+                          {Object.entries(frameworks).map(([key, framework]) => {
+                            const IconComponent = framework.icon;
+                            return (
+                              <div
+                                key={key}
+                                onClick={() => setSelectedFramework(key)}
+                                className={`p-4 border-2 rounded-lg cursor-pointer transition-all ${
+                                  selectedFramework === key
+                                    ? 'border-purple-500 bg-purple-50'
+                                    : 'border-gray-200 hover:border-purple-300'
+                                }`}
+                              >
+                                <div className="flex items-center gap-3 mb-2">
+                                  <IconComponent size={24} className="text-purple-600" />
+                                  <h4 className="font-semibold text-gray-800">{framework.name}</h4>
+                                </div>
+                                <p className="text-sm text-gray-600">{framework.description}</p>
+                              </div>
+                            );
+                          })}
+                        </div>
+
+                        <button
+                          onClick={transformContent}
+                          className="w-full mt-6 bg-gradient-to-r from-purple-600 to-blue-600 text-white py-4 px-6 rounded-lg font-semibold text-lg hover:from-purple-700 hover:to-blue-700 transition-all transform hover:scale-105 shadow-lg"
+                        >
+                          ✨ Transform to Story ✨
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {activeTab === 'result' && transformedContent && (
+                  <div className="p-8">
+                    <div className="grid md:grid-cols-2 gap-8">
+                      <div>
+                        <h3 className="text-2xl font-bold mb-4 text-red-600">❌ Before: Corporate Boring</h3>
+                        <div className="bg-gray-50 p-6 rounded-lg border-l-4 border-red-500">
+                          <p className="text-gray-700 leading-relaxed">{transformedContent.original}</p>
+                        </div>
+                        
+                        <div className="mt-6 p-4 bg-red-50 rounded-lg">
+                          <h4 className="font-semibold text-red-700 mb-2">Analysis:</h4>
+                          <ul className="text-sm text-red-600 space-y-1">
+                            <li>• Dry, factual language</li>
+                            <li>• No emotional connection</li>
+                            <li>• Features over benefits</li>
+                            <li>• Lacks narrative tension</li>
+                          </ul>
+                        </div>
+                      </div>
+
+                      <div>
+                        <h3 className="text-2xl font-bold mb-4 text-green-600">✅ After: Dramatic Story</h3>
+                        <div className="bg-gradient-to-br from-green-50 to-blue-50 p-6 rounded-lg border-l-4 border-green-500">
+                          <div className="prose prose-sm max-w-none">
+                            {transformedContent.transformed.split('\n').map((line, index) => (
+                              <p key={index} className="mb-2 text-gray-700 leading-relaxed">
+                                {line}
+                              </p>
+                            ))}
+                          </div>
+                        </div>
+
+                        <div className="mt-6 p-4 bg-green-50 rounded-lg">
+                          <h4 className="font-semibold text-green-700 mb-2">Transformation Results:</h4>
+                          <ul className="text-sm text-green-600 space-y-1">
+                            <li>• Clear protagonist & journey</li>
+                            <li>• Emotional stakes & tension</li>
+                            <li>• Vivid, relatable scenarios</li>
+                            <li>• Compelling narrative arc</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="mt-8 text-center">
+                      <button
+                        onClick={() => setActiveTab('input')}
+                        className="bg-purple-600 text-white py-3 px-8 rounded-lg font-semibold hover:bg-purple-700 transition-colors"
+                      >
+                        Transform Another Story
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              <div className="mt-8 text-center text-gray-600">
+                <p className="text-lg">🚀 <strong>Ready to revolutionize corporate storytelling?</strong></p>
+                <p className="mt-2">This demo shows the power of AI-powered narrative transformation using dramatic storytelling principles.</p>
+                <div className="mt-4 text-sm">
+                  <p>Want to discuss licensing this technology for your business?</p>
+                  <p>Built with Jeff Kitchen's storytelling framework</p>
+                </div>
+              </div>
+            </div>
+          );
+        };
+
+        ReactDOM.render(<StorytellingDemo />, document.getElementById('root'));
+    </script>
+</body>
 </html>
